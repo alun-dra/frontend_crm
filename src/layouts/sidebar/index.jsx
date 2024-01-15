@@ -62,7 +62,7 @@ const Sidebar = () => {
           },
         },
         closed: {
-          width: "40rem",
+          width: "4rem",
           transition: {
             damping: 40,
           },
@@ -82,7 +82,7 @@ const Sidebar = () => {
         variants={Nav_animation}
         initial={{ x: isTabletMid ? -250 : 0 }}
         animate={open ? "open" : "closed"}
-        className=" text-gray shadow-xl z-[999] max-w-[20rem] w-[20rem] overflow-hidden md:relative fixed h-screen"
+        className="bg-white text-gray shadow-xl z-[999] max-w-[20rem] w-[20rem] overflow-hidden md:relative fixed h-screen"
       >
         <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
           <img       
@@ -105,12 +105,17 @@ const Sidebar = () => {
                       <div className="space-y-1 mt-3">
                         {module.names.map((subMenu) => (
                           <div key={subMenu.nameSubMenu}>
-                            <div onClick={() => toggleSubModule(subMenu.nameSubMenu)} className="cursor-pointer p-3 rounded-md  truncate">
+                            <div onClick={() => toggleSubModule(subMenu.nameSubMenu)} className="cursor-pointer p-3 bg-purple-700 text-white rounded-md  truncate">
                               {subMenu.nameSubMenu}
                             </div>
                             <div className={`${expandedSubModules[subMenu.nameSubMenu] ? 'block' : 'hidden'} pl-4 space-y-1`}>
                               {subMenu.submodules.map((subModule) => (
-                                <NavLink key={subModule.name} to={subModule.path} className="block p-2 mt-1 rounded-md truncate">
+                                <NavLink 
+                                key={subModule.name} 
+                                to={subModule.path} 
+                                className={({ isActive }) => 
+                                  `block p-2 mt-1 rounded-md truncate ${isActive ? 'bg-purple-400 text-white' : 'text-gray-700'} hover:bg-purple-300 hover:text-white`
+                                }>
                                   {subModule.name}
                                 </NavLink>
                               ))}
