@@ -1,5 +1,10 @@
+import { Outlet } from 'react-router-dom';
 const ReclutamientoSeleccion = () => {
-  return <h1>reclutamiento y seleccion</h1>;
+  return (
+    <div>
+      <Outlet />
+    </div>
+  )
 };
 
 export default ReclutamientoSeleccion;
